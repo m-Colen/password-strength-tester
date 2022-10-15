@@ -1,6 +1,6 @@
 # Password Strength Tester 
 
-For this build I created a tool that allows users to check their password strenght level by entering in a potential password. 
+For this build I created a tool that allows users to check their password strength level by entering in a potential password. 
 
 The main focus of this project was to use RegEx to help determine the level of password strength.  
 
