@@ -5,20 +5,33 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Password Strength Tester</title>
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&family=Open+Sans&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Styles -->
     <link rel="stylesheet" href="styles/styles.css" />
+    <!-- Scripts -->
     <script src="scripts/script.js" defer></script>
   </head>
   <body>
-    <h1>Password Strength Tester</h1>
-    <div id="strength-meter" class="strength-meter"></div>
-    <input
-      type="text"
-      id="password-input"
-      class="password-input"
-      placeholder="Check a password"
-      auto
-      aria-labelledby="password"
-    />
-    <div id="reasons" class="reasons"></div>
+    <div class="wrapper">
+      <div class="meter">
+        <h1>Password Strength Tester</h1>
+        <div id="strength-meter" class="strength-meter"></div>
+      </div>
+      <input
+        type="text"
+        id="password-input"
+        class="password-input"
+        placeholder="Check a Password"
+        auto
+        aria-labelledby="Enter a password to check the strength"
+      />
+      <div id="reasons" class="reasons"></div>
+    </div>
   </body>
 </html>

@@ -1,25 +1,60 @@
 /* General */
 
+*,
 *::before,
-*::after,
-* {
+*::after {
   box-sizing: border-box;
 }
 
+html,
+body,
+.wrapper {
+  height: 100%;
+}
+
+html {
+  --primary-hue: 263;
+  --primary-saturation: 9%;
+  --primary-lightness: 18%;
+  --secondary-hsl: hsl(59, 72%, 52%);
+  --primary-font: "Noto Sans JP", sans-serif;
+  --secondary-font: "Open Sans", sans-serif;
+}
+
 body {
-  background-color: hsl(261, 88%, 17%);
-  color: hsl(261, 88%, 90%);
+  background-color: hsl(var(--primary-hue), var(--primary-saturation), 18%);
+  color: hsl(var(--primary-hue), var(--primary-saturation), 10%);
+  font-family: var(--primary-font);
   text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0;
+  padding: 0;
+}
+
+h1 {
+  font-family: var(--secondary-font);
+  color: var(--secondary-hsl);
+  font-weight: bold;
 }
 
 /* Password strength tester */
 
+.wrapper {
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  justify-content: center;
+  gap: 5vh;
+}
+
 .strength-meter {
   position: relative;
-  height: 2rem;
-  width: 90%;
-  border: 3px solid hsl(261, 88%, 57%);
-  border-radius: 1rem;
+  height: 4rem;
+  width: 40vw;
+  border: 5px solid hsl(var(--primary-hue), var(--primary-saturation), 70%);
+  border-radius: 2rem;
   margin: 0 auto;
   overflow: hidden;
 }
@@ -30,27 +65,39 @@ body {
   left: 0;
   height: 100%;
   width: calc(1% * var(--strength));
-  background-color: hsl(261, 88%, 67%);
-  transition: width 200ms;
+  background-color: hsl(var(--primary-hue), var(--primary-saturation), 67%);
+  transition: width 0.5s;
 }
 
 .password-input {
-  margin-top: 1rem;
-  width: 90%;
-  padding: 0.25rem 0.75rem;
-  background-color: hsl(261, 88%, 25%);
-  color: white;
-  border: 1px solid hsl(262, 88%, 57%);
-  outline: none;
+  width: 30vw;
+  padding: 1rem;
   text-align: center;
   border-radius: 0.3rem;
 }
 
-.password-input:focus {
-  border-color: hsl(261, 88%, 70%);
+.reasons {
+  height: 270px;
 }
 
 .reasons > * {
-  margin-top: 0.5rem;
-  color: hsl(261, 88%, 80%);
+  background-color: hsl(var(--primary-hue), var(--primary-saturation), 10%);
+  margin: 0.25rem;
+  padding: 0.5rem 1rem;
+  color: hsl(var(--primary-hue), var(--primary-saturation), 80%);
+  filter: drop-shadow(
+    0 0 10px hsl(var(--primary-hue, var(--primary-saturation), 80%))
+  );
+}
+
+@media only screen and (max-width: 800px) {
+  body {
+    padding: 0 4%;
+  }
+  .strength-meter {
+    width: 100%;
+  }
+  .password-input {
+    width: 80%;
+  }
 }

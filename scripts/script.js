@@ -2,32 +2,33 @@ const strengthMeter = document.querySelector("#strength-meter");
 const passwordInput = document.querySelector("#password-input");
 const reasonsContainer = document.querySelector("#reasons");
 
+/*  */
+const updateStrengthMeter = () => {
+  const weaknesses = calculatePasswordStrength(passwordInput.value);
+  let strength = 100; // Sets initial password strength
+  reasonsContainer.innerHTML = ""; // Resets container on each call
+  weaknesses.forEach((weakness) => {
+    if (weakness == null) {
+      return;
+    }
+    strength -= weakness.deduction;
+    const message = document.createElement("p");
+    message.innerHTML = weakness.message;
+    reasonsContainer.appendChild(message);
+  });
+  // Sets the strength CSS variable to the current strength
+  strengthMeter.style.setProperty("--strength", strength);
+};
+
 const calculatePasswordStrength = (password) => {
-  const weaknesses = [];
+  const weaknesses = []; // Stores an array of weakness objects
   weaknesses.push(lengthWeakness(password));
   weaknesses.push(lowerCaseWeakness(password));
   weaknesses.push(upperCaseWeakness(password));
   weaknesses.push(numberWeakness(password));
   weaknesses.push(specialCharactersWeakness(password));
   weaknesses.push(repeatCharactersWeakness(password));
-  return weaknesses;
-};
-
-const updateStrengthMeter = () => {
-  const weaknesses = calculatePasswordStrength(passwordInput.value);
-  let strength = 100;
-  reasonsContainer.innerHTML = "";
-  weaknesses.forEach((weakness) => {
-    if (weakness == null) {
-      return;
-    }
-    strength -= weakness.deduction;
-    const message = document.createElement("div");
-    message.innerText = weakness.message;
-    reasonsContainer.appendChild(message);
-  });
-  console.log(strength);
-  strengthMeter.style.setProperty("--strength", strength);
+  return weaknesses; // Returns the array of weakness objects
 };
 
 const lengthWeakness = (password) => {
@@ -96,4 +97,3 @@ const repeatCharactersWeakness = (password) => {
 };
 
 passwordInput.addEventListener("input", updateStrengthMeter);
-updateStrengthMeter();
