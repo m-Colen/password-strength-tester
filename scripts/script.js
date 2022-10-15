@@ -65,7 +65,7 @@ const numberWeakness = (password) => {
 };
 
 const specialCharactersWeakness = (password) => {
-  const regex = /[\W\S]/g;
+  const regex = /[^[A-Za-z0-9\s]/g;
   return characterTypeWeakness(password, regex, "special characters");
 };
 
@@ -73,13 +73,13 @@ const characterTypeWeakness = (password, regex, type) => {
   const matches = password.match(regex) || [];
   if (matches.length === 0) {
     return {
-      message: `Your password has no ${type}`,
+      message: `Your password has no ${type}.`,
       deduction: 20,
     };
   }
   if (matches.length <= 2) {
     return {
-      message: `Your password could use more ${type}`,
+      message: `Your password could use more ${type}.`,
       deduction: 5,
     };
   }
