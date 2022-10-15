@@ -15,6 +15,7 @@ const updateStrengthMeter = () => {
     const message = document.createElement("p");
     message.innerHTML = weakness.message;
     reasonsContainer.appendChild(message);
+    updateStrengthMeterColor(strength);
   });
   // Sets the strength CSS variable to the current strength
   strengthMeter.style.setProperty("--strength", strength);
@@ -93,6 +94,21 @@ const repeatCharactersWeakness = (password) => {
       message: "You password has repeat characters.",
       deduction: matches.length * 10,
     };
+  }
+};
+
+const updateStrengthMeterColor = (currentStrength) => {
+  const strengthLevel = document.querySelector(".strength-level");
+  if (currentStrength <= 20) {
+    strengthLevel.style.backgroundColor = "#ffa080";
+  } else if (currentStrength <= 40) {
+    strengthLevel.style.backgroundColor = "#ffc080";
+  } else if (currentStrength <= 60) {
+    strengthLevel.style.backgroundColor = "#ffdf80";
+  } else if (currentStrength <= 80) {
+    strengthLevel.style.backgroundColor = "#ffff80";
+  } else {
+    strengthLevel.style.backgroundColor = "#a5d46a";
   }
 };
 

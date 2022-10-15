@@ -52,20 +52,18 @@ h1 {
 .strength-meter {
   position: relative;
   height: 4rem;
-  width: 40vw;
-  border: 5px solid hsl(var(--primary-hue), var(--primary-saturation), 70%);
+  width: 35vw;
+  background-color: hsl(var(--primary-hue), var(--primary-saturation), 10%);
   border-radius: 2rem;
   margin: 0 auto;
   overflow: hidden;
 }
 
-.strength-meter::before {
-  content: "";
+.strength-level {
   position: absolute;
   left: 0;
   height: 100%;
   width: calc(1% * var(--strength));
-  background-color: hsl(var(--primary-hue), var(--primary-saturation), 67%);
   transition: width 0.5s;
 }
 
